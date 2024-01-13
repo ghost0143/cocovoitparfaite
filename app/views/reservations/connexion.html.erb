@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecovoyageurs</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+    <div id="connexion-form">
+        <h2>Connexion</h2>
+        <form action="traitement_connexion.php" method="post">
+            <label>Nom d'utilisateur</label>
+            <input type="text" name="username" required>
+            
+            <label>Mot de passe</label>
+            <input type="password" name="password" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <?php
+            if (isset($_GET['error'])) {
+                echo '<p class="error-message">' . htmlspecialchars($_GET['error']) . '</p>';
+            }
+        ?>
+        <!-- Lien vers la page d'inscription -->
+        <p>Nouveau ? <%= link_to 'Inscription', inscription_path %></p>
+    </div>
+</body>
+</html>
